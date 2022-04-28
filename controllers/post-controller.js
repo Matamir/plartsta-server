@@ -4,6 +4,11 @@ let posts = items;
 const postController = (app) => {
     app.get('/api/posts', findAllPosts);
     app.get('/api/posts/:uid', findPostById);
+    app.post('/api/users', createUser);
+}
+
+const createUser = (req, res) => {
+    const newUser = req.body;
 }
 
 const findAllPosts = (req, res) => {
