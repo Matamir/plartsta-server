@@ -7,4 +7,4 @@ const app = express();
 
 helloController(app);
 postController(app);
-app.listen(4000);
+app.listen(process.env.PORT || 4000);

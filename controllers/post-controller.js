@@ -13,7 +13,7 @@ const findAllPosts = (req, res) => {
 const findPostById = (req, res) => {
     const postId = req.params.uid;
     const post = posts.find(p => p.id === postId);
-    res.json(post);
+    res.json
 }
 
 export default postController;
