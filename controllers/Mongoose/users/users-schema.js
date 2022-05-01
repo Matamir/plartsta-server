@@ -3,9 +3,9 @@ const schema = mongoose.Schema({
     username: String,
     password: String,
     likes: [{
-        id:String,
+        pid:String,
     }],
-    following:[{
+    comments:[{
         id:String,
     }],
     bio: String,

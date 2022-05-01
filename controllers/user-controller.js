@@ -11,7 +11,7 @@ const userController = (app) => {
 const createUser = async (req, res) => {
     const newUser = req.body;
     const insertedUser = await usersDao.createUser(newUser);
-    res.json(newUser);
+    res.json(insertedUser);
 }
 
 const updateUser = async (req, res) => {

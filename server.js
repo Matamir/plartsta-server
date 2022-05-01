@@ -4,6 +4,7 @@ import cors from 'cors';
 import helloController from './controllers/hello-controller.js';
 import postController from './controllers/post-controller.js';
 import userController from './controllers/user-controller.js';
+import commentsController from './controllers/comment-controller.js';
 
 import mongoose from 'mongoose';
 
@@ -16,6 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+commentsController(app);
 helloController(app);
 userController(app);
 postController(app);
