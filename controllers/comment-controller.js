@@ -1,8 +1,8 @@
-import commentsDao from "./Mongoose/comments/comments-dao.js";
+import commentsDao from './Mongoose/comments/comments-dao.js';
 
 const commentsController = (app) => {
     app.get('/api/comments', findAllComments);
-    app.get('/api/comments/cid/:cid', findCommentsById);
+    app.get('/api/comments/cid/:cid', findCommentById);
     app.get('/api/comments/pid/:pid', findCommentsByPostId);
     app.get('/api/comments/uid/:uid', findCommentsByUserId);
     
@@ -17,32 +17,43 @@ const createComment = async (req, res) => {
     res.json(insertedComment);
 }
 
-const updateUser = async (req, res) => {
-    const userId = req.params.uid;
-    const updatedUser = req.body;
+const updateComment = async (req, res) => {
+    const commentId = req.params.uid;
+    const updatedComment = req.body;
 
-    const status = await usersDao.updateUser(userId, updateUser);
+    const status = await commentsDao.updateComment(commentId, updatedComment);
     res.send(status);
 }
 
 
-const deleteUser = async (req, res) => {
-    const userId = req.params.uid;
-    const status = await usersDao.deleteUser(userId);
+const deleteComment = async (req, res) => {
+    const commentId = req.params.uid;
+    const status = await commentsDao.deleteComment(commentId);
     res.send(status);
 }
 
 
-
-const findUserById = async (req, res) => {
-    const userId = req.params.uid;
-    const user = await usersDao.findUsersById(userId);
-    res.json(user);
+const findCommentsByPostId = async (req, res) => {
+    const postId = req.params.uid;
+    const comments = await commentsDao.findCommentsByPostId(postId);
+    res.json(comments);
 }
 
-const findAllUsers = async (req, res) => {
-    const users = await usersDao.findAllUsers();
-    res.json(users);
+const findCommentsByUserId = async (req, res) => {
+    const userId = req.params.uid;
+    const comments = await commentsDao.findCommentsByUserId(userId);
+    res.json(comments);
+}
+
+const findCommentById = async (req, res) => {
+    const commentId = req.params.uid;
+    const comment = await commentsDao.findCommentById(commentId);
+    res.json(comment);
+}
+
+const findAllComments = async (req, res) => {
+    const comments = await commentsDao.findAllComments();
+    res.json(comments);
 }
 
 export default commentsController;

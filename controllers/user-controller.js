@@ -18,7 +18,7 @@ const updateUser = async (req, res) => {
     const userId = req.params.uid;
     const updatedUser = req.body;
 
-    const status = await usersDao.updateUser(userId, updateUser);
+    const status = await usersDao.updateUser(userId, updatedUser);
     res.send(status);
 }
 
