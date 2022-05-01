@@ -12,7 +12,7 @@ let posts = items;
 
 const IG_API = 'https://graph.instagram.com/7509095509130541/media?fields=id,caption&access_token='
 var api_key = process.env.insta_key;
-const res = await axios.get(IG_API.concat(api_key));
+const res = await axios.get(IG_API.concat(api_key.toString()));
 const posts_raw = res.data;
 
 
