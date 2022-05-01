@@ -15,5 +15,6 @@ const schema = mongoose.Schema({
         enum: ['user','admin'],
         default: 'user',
     },
+    id: String,
 }, {collection: 'users'});
 export default schema;
