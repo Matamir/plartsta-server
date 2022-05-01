@@ -4,17 +4,17 @@ import postsDao from './Mongoose/posts/posts-dao.js';
 
 const postController = (app) => {
     app.get('/api/posts', findAllPosts);
-    app.get('/api/posts/:uid', findPostById);
-    app.put('/api/posts/:uid', updatePost);
+    app.get('/api/posts/:pid', findPostById);
+    app.put('/api/posts/:pid', updatePost);
 
 }
 
 
 const updatePost = async (req, res) => {
-    const postId = req.params.uid;
+    const postId = req.params.pid;
     const updatedPost = req.body;
 
-    const status = await usersDao.updateUser(postId, updatedPost);
+    const status = await postsDao.updatePost(postId, updatedPost);
     res.send(status);
 }
 
@@ -25,7 +25,7 @@ const findAllPosts = async (req, res) => {
 }
 
 const findPostById = async (req, res) => {
-    const postId = req.params.uid;
+    const postId = req.params.pid;
     const post = await postsDao.findPostById(postId);
     res.json
 }
