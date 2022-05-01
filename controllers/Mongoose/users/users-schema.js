@@ -10,5 +10,10 @@ const schema = mongoose.Schema({
     }],
     bio: String,
     pfp: String,
+    userType: {
+        type: String,
+        enum: ['user','admin'],
+        default: 'user',
+    },
 }, {collection: 'users'});
 export default schema;
