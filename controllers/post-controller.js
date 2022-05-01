@@ -5,6 +5,17 @@ import postsDao from './Mongoose/posts/posts-dao.js';
 const postController = (app) => {
     app.get('/api/posts', findAllPosts);
     app.get('/api/posts/:uid', findPostById);
+    app.put('/api/posts/:uid', updatePost);
+
+}
+
+
+const updatePost = async (req, res) => {
+    const postId = req.params.uid;
+    const updatedPost = req.body;
+
+    const status = await usersDao.updateUser(postId, updatedPost);
+    res.send(status);
 }
 
 
