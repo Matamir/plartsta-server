@@ -5,6 +5,5 @@ const schema = mongoose.Schema({
     likes: Number,
     timestamp: String,
     image: String,
-    id: String,
 }, {collection: 'posts'});
 export default schema;
