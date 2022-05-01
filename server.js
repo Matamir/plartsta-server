@@ -7,7 +7,7 @@ import userController from './controllers/user-controller.js';
 
 import mongoose from 'mongoose';
 
-const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb+srv://Matamir:Skier$Applaud1$Radiance$Distract$Unscented@cluster0.zhzss.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb+srv://Matamir:Handprint9.Ardently.Goofball.Hardware.Lens@cluster0.zhzss.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 mongoose.connect(CONNECTION_STRING)
 

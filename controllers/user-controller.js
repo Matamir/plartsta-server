@@ -1,5 +1,4 @@
-import people from './users.js';
-let users = people;
+import usersDao from "./Mongoose/users/users-dao.js";
 
 const userController = (app) => {
     app.get('/api/users', findAllUsers);
@@ -9,45 +8,37 @@ const userController = (app) => {
     app.put('/api/users/:uid', updateUser);
 }
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
     const newUser = req.body;
-    newUser._id = (new Date()).getTime() + '';
-    users.push(newUser);
+    const insertedUser = await usersDao.createUser(newUser);
     res.json(newUser);
 }
 
-const updateUser = (req, res) => {
-    const userId = req.params['uid'];
-    const updatedUser = req.body;
-    users = users.map(usr =>
-        usr._id === userId ?
-            updatedUser :
-            usr);
-    res.sendStatus(200);
-}
-
-
-const deleteUser = (req, res) => {
-    const userId = req.params['uid'];
-    users = users.filter(usr =>
-        usr._id !== userId);
-    res.sendStatus(200);
-}
-
-
-
-const findUserById = (req, res) => {
+const updateUser = async (req, res) => {
     const userId = req.params.uid;
-    const user = users.find(u => u._id === userId);
+    const updatedUser = req.body;
+
+    const status = await usersDao.updateUser(userId, updateUser);
+    res.send(status);
+}
+
+
+const deleteUser = async (req, res) => {
+    const userId = req.params.uid;
+    const status = await usersDao.deleteUser(userId);
+    res.send(status);
+}
+
+
+
+const findUserById = async (req, res) => {
+    const userId = req.params.uid;
+    const user = await usersDao.findUsersById(userId);
     res.json(user);
 }
 
-const findAllUsers = (req, res) => {
-    const type = req.query.type;
-    if (type) {
-        res.json(findUsersByType(type));
-        return;
-    }
+const findAllUsers = async (req, res) => {
+    const users = await usersDao.findAllUsers();
     res.json(users);
 }
 
