@@ -11,20 +11,23 @@ let posts = items;
 // }
 
 const IG_API = 'https://graph.instagram.com/7509095509130541/media?fields=id,caption&access_token='
-var api_key = process.env.insta_key;
-const res = await axios.get(IG_API.concat(api_key.toString()));
-const posts_raw = res.data;
+var api_key = process.env.insta_key || 'IGQVJWbmdYWHJhM3l5eU11VDBJR3R1andaSzdZAWDN5bTVYUlZAMR3RtR1hLYTE2alFRdUREdk9KY0VxazRMRHRTSG5LZA0tPa1RydEs5dUI2Q3lDNnhNVlo3dWxlYnBreFpfMDZA0V09R';
 
+const raw_posts = async () => {
+    const res = await axios.get(IG_API.concat(api_key.toString()));
+    const post_raw = res.data.data;
+    return post_raw
+}
 
 const postController = (app) => {
     app.get('/api/posts', findAllPosts);
     app.get('/api/posts/:uid', findPostById);
-
 }
 
 
-const findAllPosts = (req, res) => {
-    res.json(post_raw);
+const findAllPosts = async (req, res) => {
+    posts = await raw_posts()
+    res.json(posts);
 }
 
 const findPostById = (req, res) => {
