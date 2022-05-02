@@ -27,7 +27,7 @@ const findAllPosts = async (req, res) => {
 const findPostById = async (req, res) => {
     const postId = req.params.pid;
     const post = await postsDao.findPostById(postId);
-    res.json
+    res.json(post);
 }
 
 export default postController;
