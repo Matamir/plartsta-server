@@ -34,7 +34,7 @@ const deleteComment = async (req, res) => {
 
 
 const findCommentsByPostId = async (req, res) => {
-    const postId = req.params.uid;
+    const postId = req.params.pid;
     const comments = await commentsDao.findCommentsByPostId(postId);
     res.json(comments);
 }
