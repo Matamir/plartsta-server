@@ -12,7 +12,6 @@ const userController = (app) => {
     app.put('/api/users/:uid', updateUser);
 }
 
-
 const createUser = async (req, res) => {
     const newUser = req.body;
     const insertedUser = await usersDao.createUser(newUser);
