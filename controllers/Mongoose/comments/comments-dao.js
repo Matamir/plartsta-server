@@ -1,4 +1,5 @@
 import commentsModel from './comments-model.js';
+
 export const findAllComments = () => commentsModel.find();
 export const findCommentById = (id) => commentsModel.findById(id);
 
