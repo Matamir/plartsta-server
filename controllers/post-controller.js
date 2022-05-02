@@ -17,8 +17,9 @@ const updatePost = async (req, res) => {
     const status = await postsDao.updatePost(postId, updatedPost);
     res.send(status);
 }
-
  
+
+
 const findAllPosts = async (req, res) => {
     const posts = await postsDao.findAllPosts();
     res.json(posts);
