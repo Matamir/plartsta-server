@@ -18,7 +18,7 @@ const createComment = async (req, res) => {
 }
 
 const updateComment = async (req, res) => {
-    const commentId = req.params.uid;
+    const commentId = req.params.cid;
     const updatedComment = req.body;
 
     const status = await commentsDao.updateComment(commentId, updatedComment);
@@ -27,7 +27,7 @@ const updateComment = async (req, res) => {
 
 
 const deleteComment = async (req, res) => {
-    const commentId = req.params.uid;
+    const commentId = req.params.cid;
     const status = await commentsDao.deleteComment(commentId);
     res.send(status);
 }
@@ -46,7 +46,7 @@ const findCommentsByUserId = async (req, res) => {
 }
 
 const findCommentById = async (req, res) => {
-    const commentId = req.params.uid;
+    const commentId = req.params.cid;
     const comment = await commentsDao.findCommentById(commentId);
     res.json(comment);
 }
