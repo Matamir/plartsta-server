@@ -49,7 +49,6 @@ const findUserByUsername = async (req, res) => {
 }
 
 
-
 const findUserById = async (req, res) => {
     const userId = req.params.uid;
     const user = await usersDao.findUsersById(userId);
