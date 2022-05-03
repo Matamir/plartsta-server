@@ -1,5 +1,5 @@
 import axios from "axios";
-import postsDao, { createPost } from './Mongoose/posts/posts-dao.js';
+import postsDao from './Mongoose/posts/posts-dao.js';
 
 
 const postController = (app) => {
