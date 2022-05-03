@@ -18,7 +18,6 @@ const createUser = async (req, res) => {
     res.json(insertedUser);
 }
 
-
 const updateUser = async (req, res) => {
     const userId = req.params.uid;
     const updatedUser = req.body;
