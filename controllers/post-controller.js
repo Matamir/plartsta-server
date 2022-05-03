@@ -1,5 +1,5 @@
 import axios from "axios";
-import postsDao from './Mongoose/posts/posts-dao.js';
+import postsDao, { createPost } from './Mongoose/posts/posts-dao.js';
 
 
 const postController = (app) => {
@@ -7,8 +7,15 @@ const postController = (app) => {
     app.get('/api/posts/:pid', findPostById);
     app.put('/api/posts/:pid', updatePost);
 
+    app.post('/api/posts', createPost)
 }
 
+
+const createPost = async (req, res) => {
+    const newPost = req.body;
+    const insertedPost = await postsDao.createPost(newPost);
+    res.json(insertedPost);
+}
 
 const updatePost = async (req, res) => {
     const postId = req.params.pid;
