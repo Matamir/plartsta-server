@@ -34,7 +34,6 @@ const deleteUser = async (req, res) => {
 }
 
 
-
 const findUserByCredentials = async (req, res) => {
     const username = req.params.user;
     const password = req.params.pass;
