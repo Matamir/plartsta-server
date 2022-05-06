@@ -41,6 +41,7 @@ const findUserByCredentials = async (req, res) => {
     res.json(user);
 }
 
+
 const findUserByUsername = async (req, res) => {
     const username = req.params.user;
     const user = await usersDao.findUserByUsername(username);
